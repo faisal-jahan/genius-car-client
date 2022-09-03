@@ -1,16 +1,29 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
 import Service from '../Service/Service';
 import './Services.css';
+import axiosPrivate from './../../../api/axiosPrivate';
 
 const Services = () => {
 
-    const [services, setServices] = useState([]);
+    // const [services, setServices] = useState([]);
 
-    useEffect( ()=>{
-        fetch('services.json')
-        .then(res => res.json())
-        .then(data => setServices(data));
-    }, [])
+    const getServices = async () =>{
+        const {data} = await axiosPrivate.get(`https://cryptic-reaches-45480.herokuapp.com/services`)
+        return data;
+    }
+
+    const {isLoading, isError, data, error} = useQuery("allServices",()=>getServices())
+
+    if(isLoading){
+        return <h4>Loading...</h4>
+    }
+
+    // useEffect( ()=>{
+
+    //     getServices();
+    // }, [])
 
     return (
         <div id="services" className='container'>
@@ -18,8 +31,8 @@ const Services = () => {
             <h1 className='text-primary text-center mt-5'> Our Services</h1>
             <div className="services-container">
             {
-                services.map(service => <Service
-                    key={service.id}
+                data.map((service,index) => <Service
+                    key={index}
                     service={service}
                 >
                 </Service>)
