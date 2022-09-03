@@ -13,7 +13,8 @@ const Orders = () => {
     const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate();
 
-    console.log(user)
+    console.log(user.email)
+
     const getOrders = async() =>{
         const {data} = await axiosPrivate.get(`https://cryptic-reaches-45480.herokuapp.com/orders?email=${user.email}`);
         return data;
@@ -21,7 +22,6 @@ const Orders = () => {
 
     const {isLoading, isError, data} = useQuery("orders",()=>getOrders());
 
-    console.log(data);
     if(isLoading){
         return <h2>Loading...</h2>
     }

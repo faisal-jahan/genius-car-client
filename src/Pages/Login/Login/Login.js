@@ -28,7 +28,7 @@ const Login = () => {
 
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
-    const [token] = useToken(user.email);
+    const [token] = useToken(user?.email);
 
     if (loading || sending) {
         return <Loading></Loading>
