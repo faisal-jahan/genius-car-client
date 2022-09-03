@@ -10,7 +10,7 @@ const ManageServices = () => {
     const navigate = useNavigate();
 
     const getServices = async() =>{
-        const {data} = await axiosPrivate.get('https://cryptic-reaches-45480.herokuapp.com/services');
+        const {data} = await axiosPrivate.get(`${process.env.REACT_APP_link}/services`);
         return data; 
     }
 
@@ -38,7 +38,7 @@ const ManageServices = () => {
 
         if(confirm){
 
-            fetch(`https://cryptic-reaches-45480.herokuapp.com/services/${id}`,{
+            fetch(`${process.env.REACT_APP_link}/services/${id}`,{
                 method:'Delete'
             })
             .then(res=>res.json())

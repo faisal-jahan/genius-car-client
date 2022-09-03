@@ -9,7 +9,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PageTitle from '../../Shared/PageTitle/PageTitle';
 import axios from 'axios';
-import useToken from '../../../hooks/useToken';
 
 const Login = () => {
     const emailRef = useRef('');
@@ -47,7 +46,7 @@ const Login = () => {
 
         await signInWithEmailAndPassword(email, password);
         
-       const {data} = await axios.post('https://cryptic-reaches-45480.herokuapp.com/login',{email})
+       const {data} = await axios.post(`${process.env.REACT_APP_link}/login`,{email})
         localStorage.setItem('accessToken',data.accessToken);
     }
 

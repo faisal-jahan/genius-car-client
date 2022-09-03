@@ -13,10 +13,8 @@ const Orders = () => {
     const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate();
 
-    console.log(user.email)
-
     const getOrders = async() =>{
-        const {data} = await axiosPrivate.get(`https://cryptic-reaches-45480.herokuapp.com/orders?email=${user.email}`);
+        const {data} = await axiosPrivate.get(`${process.env.REACT_APP_link}/orders?email=${user.email}`);
         return data;
     }
 
@@ -48,7 +46,7 @@ const Orders = () => {
 
         if(confirm){
 
-            fetch(`https://cryptic-reaches-45480.herokuapp.com/orders/${id}`,{
+            fetch(`${process.env.REACT_APP_link}/orders/${id}`,{
                 method:'Delete'
             })
             .then(res=>res.json())

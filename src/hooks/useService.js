@@ -5,7 +5,7 @@ const useServices = (serviceId) =>{
     const [service,setService] = useState({});
 
     useEffect(()=>{
-        fetch(`https://cryptic-reaches-45480.herokuapp.com/services/${serviceId}`)
+        fetch(`${process.env.REACT_APP_link}/services/${serviceId}`)
         .then(res=>res.json())
         .then(data=>setService(data))
     },[serviceId])

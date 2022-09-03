@@ -7,7 +7,7 @@ const useToken = (user) =>{
 
     useEffect(()=>{
         const getToken = async () =>{
-            const {data} = await axios.post('https://cryptic-reaches-45480.herokuapp.com/login',{user});
+            const {data} = await axios.post(`${process.env.REACT_APP_link}/login`,{user});
 
             setToken(data.accessToken);
             localStorage.setItem('accessToken',data.accessToken);

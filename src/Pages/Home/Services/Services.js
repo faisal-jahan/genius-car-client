@@ -10,7 +10,7 @@ const Services = () => {
     // const [services, setServices] = useState([]);
 
     const getServices = async () =>{
-        const {data} = await axiosPrivate.get(`https://cryptic-reaches-45480.herokuapp.com/services`)
+        const {data} = await axiosPrivate.get(`${process.env.REACT_APP_link}/services`)
         return data;
     }
 

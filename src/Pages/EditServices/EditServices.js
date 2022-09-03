@@ -19,7 +19,7 @@ const EditServices = () => {
     });
     
     useEffect(()=>{
-        fetch(`https://cryptic-reaches-45480.herokuapp.com/services/${id}`)
+        fetch(`${process.env.REACT_APP_link}/services/${id}`)
         .then(res=>res.json())
         .then(data=>setService(data))
     },[])
@@ -31,7 +31,7 @@ const EditServices = () => {
         data.description = e.target.description.value;
         data.img = e.target.img.value;
 
-        fetch(`https://cryptic-reaches-45480.herokuapp.com/services/${id}`,{
+        fetch(`${process.env.REACT_APP_link}/services/${id}`,{
             method:'put',
             headers:{
                 'content-type':'application/json'

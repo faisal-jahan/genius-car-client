@@ -43,7 +43,7 @@ const EditOrders = () => {
         data.address = e.target.address.value;
         data.phone = e.target.phone.value;
  
-        axios.put(`https://cryptic-reaches-45480.herokuapp.com/orders/${id}`,data)
+        axios.put(`${process.env.REACT_APP_link}/orders/${id}`,data)
         .then(data=>{
             if(data.data.acknowledged){
                 toast('updated Data');

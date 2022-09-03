@@ -29,7 +29,7 @@ const Checkout = () => {
         const serviceName = e.target.serviceName.value?e.target.serviceName.value:service.name;
         data.serviceName = serviceName;
         
-        axios.post('https://cryptic-reaches-45480.herokuapp.com/orders',data)
+        axios.post(`${process.env.REACT_APP_link}/orders`,data)
         .then(data=>{
             if(data.data){
                 toast(data.data)
