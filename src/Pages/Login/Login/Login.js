@@ -28,6 +28,8 @@ const Login = () => {
 
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
+    const [token] = useToken(user.email);
+
     if (loading || sending) {
         return <Loading></Loading>
     }
@@ -50,6 +52,8 @@ const Login = () => {
        const {data} = await axios.post('https://cryptic-reaches-45480.herokuapp.com/login',{email})
         localStorage.setItem('accessToken',data.accessToken);
     }
+
+    console.log(token);
 
     const navigateRegister = event => {
         navigate('/register');
