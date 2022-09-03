@@ -13,6 +13,7 @@ const Orders = () => {
     const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate();
 
+    console.log(user)
     const getOrders = async() =>{
         const {data} = await axiosPrivate.get(`https://cryptic-reaches-45480.herokuapp.com/orders?email=${user.email}`);
         return data;
