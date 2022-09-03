@@ -41,7 +41,7 @@ const Checkout = () => {
     return (
         <div>
             <div className='container text-center'>
-                <h2>Please Checkout your booking: <br/>{service.name}</h2>
+                <h2>Please Checkout your booking, and confirm: <br/>{service.name}</h2>
             </div>
             <div className='w-100 d-flex justify-content-center'>
                 {/* <form>
