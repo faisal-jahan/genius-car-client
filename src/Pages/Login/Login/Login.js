@@ -9,6 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PageTitle from '../../Shared/PageTitle/PageTitle';
 import axios from 'axios';
+import useToken from '../../../hooks/useToken';
 
 const Login = () => {
     const emailRef = useRef('');
@@ -38,7 +39,7 @@ const Login = () => {
     if (error) {
         errorElement = <p className='text-danger'>Error: {error?.message}</p>
     }
-
+    console.log(user);
     const handleSubmit = async event => {
         event.preventDefault();
         const email = emailRef.current.value;
